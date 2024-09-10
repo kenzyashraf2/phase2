@@ -1,0 +1,132 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "Employee.h"
+#include "Client.h"
+#include "Admin.h"
+
+using namespace std;
+
+int main() {
+	Employee e1, e2;
+
+	e1.set_name("kenzy ashraf");
+	e1.set_id(123);
+	e1.set_password("512kenzya//");
+	e1.set_salary(50000);
+
+	
+	cout << "======================== \n";
+	
+	e2.set_name("malak abdelhady");
+	e2.set_id(1243);
+	e2.set_password("512malak//");
+	e2.set_salary(60000);
+
+	
+
+
+	ofstream myfile("Employee.txt",ios::app);
+	myfile << "Employee info:" << endl;
+	myfile << "Employee1:" << e1.get_name() << "," << e1.get_id() << "," << e1.get_passwsord() << "," << e1.get_salary() << endl;
+
+	myfile << "Employee2:" << e2.get_name() << "," << e2.get_id() << "," << e2.get_passwsord() << "," << e2.get_salary() << endl;
+
+	myfile.close();
+
+	//==================================
+
+
+	Client c1, c2, c3;
+	c1.set_name("shimaa aly");
+	c1.set_id(145);
+	c1.set_password("shimaaaly12");
+	c1.set_balance(2000);
+
+	//==================
+	c2.set_name("toka khaled");
+	c2.set_id(144);
+	c2.set_password("tokakhaledy12");
+	c2.set_balance(2500);
+
+	//===========================
+
+	c3.set_name("rahma amr");
+	c3.set_id(133);
+	c3.set_password("rahmaamrrr12");
+	c3.set_balance(3000);
+
+	//================================
+
+	ofstream file("Client.txt",ios::app);
+	file << "clients info:" << endl;
+	file << c1.get_name() << "," << c1.get_id() << "," << c1.get_passwsord() << "," << c1.get_balance() << endl;
+
+	file << c2.get_name() << "," << c2.get_id() << "," << c2.get_passwsord() << "," << c2.get_balance() << endl;
+
+	file << c3.get_name() << "," << c3.get_id() << "," << c3.get_passwsord() << "," << c3.get_balance() << endl;
+
+	file.close();
+
+
+
+	Admin a;
+
+	a.set_name("sama aly");
+	a.set_id(513);
+	a.set_password("samaaly//12");
+	a.set_salary(5000);
+
+
+	ofstream File("Admin.txt",ios::app);
+	File << "Admin info :" << endl;
+	File << a.get_name() << "," << a.get_id() << "," << a.get_passwsord() << "," << a.get_salary() << endl;
+
+
+	File.close();
+
+
+
+
+}
+
+
+//===================================================================
+
+#pragma once
+#include <iostream>
+#include <string>
+#include<vector>
+#include"Client.h"
+#include "Employee.h"
+#include "Admin.h"
+class DataSourceInterface
+{
+public:
+ 
+	virtual void add_client(Client) = 0;
+	virtual void add_employee(Employee) = 0;
+	virtual void add_admin(Admin) = 0;
+
+	virtual std::vector <Client> getAllClients() = 0;
+	virtual std::vector <Employee> getAllEmployee() = 0;
+	virtual std::vector <Admin> getAllAdmin() = 0;
+
+
+	virtual void removeAllClients() = 0;
+	virtual void removeAllEmployees() = 0;
+	virtual void removeAllAdmins() = 0;
+
+
+
+
+
+
+
+};
+
+
+
+
+
+
